@@ -32,7 +32,34 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.each-name {
+  background-color: #647ba8;
+  border-radius: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.each-name-girls {
+  background-color: #e599ef;
+  border-radius: 2rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+}
+
+.container-for-names {
+  display: flex;
+  flex-direction: row;
+  gap: 0.2rem;
+  width: 80%;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  justify-content: center;
+
 }

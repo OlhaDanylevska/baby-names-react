@@ -1,23 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import babyNamesData from "./babyNamesData.json"
+
+
+const sortTheNames = () => {
+  babyNamesData.sort(function (a, b) {
+    if (a.name < b.name) { return -1; }
+    if (a.name > b.name) { return 1; }
+    return 0;
+  })
+
+}
+
+sortTheNames()
+
+const DisplayTheName = () => {
+  return (
+    <div className='container-for-names'>
+      {
+
+        babyNamesData.map(eachName => {
+          if (eachName.sex === "m") {
+            return (<span className="each-name">{eachName.name}</span>)
+          } else {
+            return (<span className="each-name-girls">{eachName.name}</span>)
+          }
+
+        })
+      }
+    </div>
+  )
+
+}
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <DisplayTheName />
+
     </div>
   );
 }
