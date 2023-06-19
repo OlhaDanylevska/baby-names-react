@@ -63,3 +63,17 @@
   justify-content: center;
 
 }
+
+.search-bar {
+  width: 20rem;
+  height: 2rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 8px rgb(199, 199, 199);
+  border: none;
+  border-radius: 1rem;
+  padding-left: 1rem;
+}
+
+.search-bar:focus {
+  outline: none;
+}

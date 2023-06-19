@@ -1,43 +1,27 @@
+import React, { useState } from 'react';
 import './App.css';
-import babyNamesData from "./babyNamesData.json"
-
-
-const sortTheNames = () => {
-  babyNamesData.sort(function (a, b) {
-    if (a.name < b.name) { return -1; }
-    if (a.name > b.name) { return 1; }
-    return 0;
-  })
-
-}
-
-sortTheNames()
-
-const DisplayTheName = () => {
-  return (
-    <div className='container-for-names'>
-      {
-
-        babyNamesData.map(eachName => {
-          if (eachName.sex === "m") {
-            return (<span className="each-name">{eachName.name}</span>)
-          } else {
-            return (<span className="each-name-girls">{eachName.name}</span>)
-          }
-
-        })
-      }
-    </div>
-  )
-
-}
+import DisplayNames from './display-the-names';
 
 function App() {
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleChange = (e) => {
+    let inputValue = e.target.value.toLowerCase()
+    setSearchInput(inputValue);
+  };
   return (
     <div className="App">
-
-      <DisplayTheName />
-
+      <div>
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search here"
+          onChange={handleChange}
+          value={searchInput} />
+      </div>
+      <div>
+        <DisplayNames input={searchInput} />
+      </div>
     </div>
   );
 }
