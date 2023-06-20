@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import './App.css';
 import DisplayNames from './display-the-names';
 
+
+
 function App() {
   const [searchInput, setSearchInput] = useState("");
 
@@ -12,6 +14,7 @@ function App() {
   return (
     <div className="App">
       <div>
+        <h1>Search the Name</h1>
         <input
           type="text"
           className="search-bar"

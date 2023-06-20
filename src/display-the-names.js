@@ -27,11 +27,10 @@ const DisplayNames = (props) => {
             {
                 filteredNames.map((eachName) => {
                     if (eachName && eachName.sex === "m") {
-                        return (<span key={eachName.id} className="each-name">{eachName.name}</span>)
+                        return (<span key={eachName.id} className="each-name" onClick={() => deleteName(eachName.name)}>{eachName.name}</span>)
                     } else {
                         return (<span key={eachName.id} className="each-name-girls">{eachName.name}</span>)
                     }
-
                 })
             }
         </div>
