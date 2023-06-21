@@ -1,30 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
-import DisplayNames from './display-the-names';
-
+import SearchBar from './SearchBar';
 
 
 function App() {
-  const [searchInput, setSearchInput] = useState("");
 
-  const handleChange = (e) => {
-    let inputValue = e.target.value.toLowerCase()
-    setSearchInput(inputValue);
-  };
   return (
     <div className="App">
-      <div>
-        <h1>Search the Name</h1>
-        <input
-          type="text"
-          className="search-bar"
-          placeholder="Search here"
-          onChange={handleChange}
-          value={searchInput} />
-      </div>
-      <div>
-        <DisplayNames input={searchInput} />
-      </div>
+      <SearchBar />
     </div>
   );
 }
