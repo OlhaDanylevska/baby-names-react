@@ -22,9 +22,15 @@ const DisplayNames = ({ allNames, setMainList }) => {
     return (
         <div className="all-names">
             <div className="favorites" >
-                {favoriteName.map((eachName) => {
-                    return (<span key={eachName.id} className={eachName.sex} onClick={() => { handleDelete(eachName); }}>{eachName.name}</span>);
-                })}
+                <div className="text-block">
+                    <h3>Favorit Names List</h3>
+                    <p>Add your Favorite names to "Favorites" by click</p>
+                </div>
+                <div className="f-names">
+                    {favoriteName.map((eachName) => {
+                        return (<span key={eachName.id} className={eachName.sex} onClick={() => { handleDelete(eachName); }}>{eachName.name}</span>);
+                    })}
+                </div>
             </div>
             <div className='container-for-names'>
                 {allNames.map((eachName) => {

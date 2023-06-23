@@ -1,19 +1,6 @@
-import { useState } from "react";
-import DisplayNames from "./display-the-names";
-import babyNamesData from "./babyNamesData.json"
-
-const sortedNames = (names, key) => {
-    return names.sort((a, b) => a[key].localeCompare(b[key]));
-};
-
-const SearchBar = () => {
-    const [searchInput, setSearchInput] = useState("");
-    const initialData = sortedNames(babyNamesData, "name");
-    const [mainList, setMainList] = useState(initialData)
-
-    console.log({ mainList })
 
 
+const SearchBar = ({ mainList, setMainList, searchInput, setSearchInput, initialData }) => {
 
     function handleChange(e) {
         let inputValue = e.target.value;
@@ -33,20 +20,15 @@ const SearchBar = () => {
     }
     console.log(mainList)
     return (
-        <div>
-            <h1>Search the Name</h1>
+        <div className="search-area">
+            <h1>Search your Favorite Name</h1>
             <input
                 type="text"
                 className="search-bar"
                 placeholder="Search here"
                 onChange={handleChange}
                 value={searchInput} />
-            <div className='favirite-names'>
-                <p>Add your Favorite names by click</p>
-            </div>
-            <div>
-                <DisplayNames allNames={mainList} setMainList={setMainList} />
-            </div>
+
         </div>
     )
 }
