@@ -1,58 +1,39 @@
 import { useState } from "react";
-import babyNamesData from "./babyNamesData.json"
 
 
-const sortTheNames = () => {
-    babyNamesData.sort(function (a, b) {
-        if (a.name < b.name) { return -1; }
-        if (a.name > b.name) { return 1; }
-        return 0;
-    })
-
-}
-
-sortTheNames()
-
-
-const DisplayNames = (props) => {
-
+const DisplayNames = ({ allNames, setMainList }) => {
     const [favoriteName, setFavoriteName] = useState([])
 
-    let favorites = babyNamesData.map((babyName, id) => {
-        if (favoriteName.includes(babyName.id)) {
-            return (
-                <span key={id} className={babyName.sex}>{babyName.name}</span>
-            )
-        }
-    })
 
-    function addFavorite(id) {
-        setFavoriteName(favoriteName.concat([id]))
+    const handleChanges = (name) => {
+        setFavoriteName(favoriteName.concat(name))
+        console.log(favoriteName)
+        setMainList(allNames.filter((babyName) => babyName.name !== name.name))
     }
 
-    const filteredNames = babyNamesData.filter((babyName) => {
-        if (props.input === "") {
-            return babyName
-        } else {
-            return babyName.name.toLowerCase().includes(props.input)
-        }
-    })
+    const handleDelete = (name) => {
+        setFavoriteName(favoriteName.filter((babyName) => babyName.name !== name.name))
+        setMainList(allNames.concat(name))
+    }
 
+    console.log({ favoriteName })
+
+    console.log("props", allNames)
     return (
-        <div>
-            <div>
-                {favorites}
+        <div className="all-names">
+            <div className="favorites" >
+                {favoriteName.map((eachName) => {
+                    return (<span key={eachName.id} className={eachName.sex} onClick={() => { handleDelete(eachName); }}>{eachName.name}</span>);
+                })}
             </div>
             <div className='container-for-names'>
-                {
-                    filteredNames.map((eachName) => {
-                        return (<span key={eachName.id} className={eachName.sex} onClick={() => addFavorite(eachName.id)}>{eachName.name}</span>)
-                    })
-                }
+                {allNames.map((eachName) => {
+                    return (<span key={eachName.id} className={eachName.sex}
+                        onClick={() => { handleChanges(eachName) }}>{eachName.name}</span>);
+                })}
+
             </div>
-
-        </div>
-
+        </div >
     )
 
 }
