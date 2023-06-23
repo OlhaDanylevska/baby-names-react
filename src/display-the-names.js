@@ -23,7 +23,7 @@ const DisplayNames = ({ allNames, setMainList }) => {
         <div className="all-names">
             <div className="favorites" >
                 <div className="text-block">
-                    <h3>Favorit Names List</h3>
+                    <h3>Favorite Names List</h3>
                     <p>Add your Favorite names to "Favorites" by click</p>
                 </div>
                 <div className="f-names">

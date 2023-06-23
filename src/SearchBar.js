@@ -21,7 +21,7 @@ const SearchBar = ({ mainList, setMainList, searchInput, setSearchInput, initial
     console.log(mainList)
     return (
         <div className="search-area">
-            <h1>Search your Favorite Name</h1>
+            <h1>Search for your Favorite Names</h1>
             <input
                 type="text"
                 className="search-bar"
