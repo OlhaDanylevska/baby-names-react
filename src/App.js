@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <SearchBar mainList={mainList} setMainList={setMainList}
         searchInput={searchInput} setSearchInput={setSearchInput} initialData={initialData} />
-      <DisplayNames allNames={mainList} setMainList={setMainList} />
+      <DisplayNames mainList={mainList} setMainList={setMainList} />
     </div>
   );
 }
