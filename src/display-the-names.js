@@ -1,31 +1,24 @@
 import { useState } from "react";
 
 
-const DisplayNames = ({ allNames: mainList, setMainList }) => {
+const DisplayNames = ({ allNames, setMainList }) => {
     const [favoriteName, setFavoriteName] = useState([])
 
 
     const handleChanges = (name) => {
         setFavoriteName(favoriteName.concat(name))
         console.log(favoriteName)
-        setMainList(mainList.filter((babyName) => babyName.name !== name.name))
+        setMainList(allNames.filter((babyName) => babyName.name !== name.name))
     }
 
     const handleDelete = (name) => {
         setFavoriteName(favoriteName.filter((babyName) => babyName.name !== name.name))
-
-        console.log({ allNames: mainList })
-        let sortedNamesAfterFavorite = (names, key) => {
-            return names.sort((a, b) => a[key].localeCompare(b[key]));
-        };
-
-        const allNamesAfterFavorite = sortedNamesAfterFavorite([...mainList, name], "name");
-        setMainList(allNamesAfterFavorite)
+        setMainList(allNames.concat(name))
     }
 
     console.log({ favoriteName })
 
-    console.log("props", mainList)
+    console.log("props", allNames)
     return (
         <div className="all-names">
             <div className="favorites" >
@@ -40,7 +33,7 @@ const DisplayNames = ({ allNames: mainList, setMainList }) => {
                 </div>
             </div>
             <div className='container-for-names'>
-                {mainList.map((eachName) => {
+                {allNames.map((eachName) => {
                     return (<span key={eachName.id} className={eachName.sex}
                         onClick={() => { handleChanges(eachName) }}>{eachName.name}</span>);
                 })}
