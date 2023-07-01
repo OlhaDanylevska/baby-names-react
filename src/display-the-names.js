@@ -13,7 +13,13 @@ const DisplayNames = ({ allNames, setMainList }) => {
 
     const handleDelete = (name) => {
         setFavoriteName(favoriteName.filter((babyName) => babyName.name !== name.name))
-        setMainList(allNames.concat(name))
+        let sortedNamesAfterFavorite = (names, key) => {
+            return names.sort((a, b) => a[key].localeCompare(b[key]));
+        };
+
+        const allNamesAfterFavorite = sortedNamesAfterFavorite([...allNames, name], "name");
+        setMainList(allNamesAfterFavorite)
+
     }
 
     console.log({ favoriteName })

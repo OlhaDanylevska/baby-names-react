@@ -9,8 +9,9 @@ function App() {
   const sortedNames = (names, key) => {
     return names.sort((a, b) => a[key].localeCompare(b[key]));
   };
-  const [searchInput, setSearchInput] = useState("");
+
   const initialData = sortedNames(babyNamesData, "name");
+  const [searchInput, setSearchInput] = useState("");
   const [mainList, setMainList] = useState(initialData)
 
   return (
