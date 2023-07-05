@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
 import SearchBar from './SearchBar';
-import DisplayNames from "./display-the-names";
 import babyNamesData from "./babyNamesData.json"
 
 
@@ -18,7 +17,6 @@ function App() {
     <div className="App">
       <SearchBar mainList={mainList} setMainList={setMainList}
         searchInput={searchInput} setSearchInput={setSearchInput} initialData={initialData} />
-      <DisplayNames allNames={mainList} setMainList={setMainList} />
     </div>
   );
 }

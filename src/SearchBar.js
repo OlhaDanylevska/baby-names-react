@@ -1,10 +1,11 @@
-
+import { useState } from "react";
+import DisplayNames from "./display-the-names";
 
 const SearchBar = ({ mainList, setMainList, searchInput, setSearchInput, initialData }) => {
+    const [active, setActive] = useState("gen")
 
     function handleChange(e) {
         let inputValue = e.target.value;
-
         if (!inputValue) {
             setMainList(initialData)
             console.log(inputValue)
@@ -18,7 +19,20 @@ const SearchBar = ({ mainList, setMainList, searchInput, setSearchInput, initial
             setSearchInput(inputValue)
         }
     }
-    console.log(mainList)
+    const handleAllGenders = (gender) => {
+        console.log("hello")
+        if (active === "gen") {
+            const sortedNames = mainList.filter(name => {
+                return name.sex === gender
+            })
+            setMainList(sortedNames)
+            setActive("all")
+        }
+        else if (active === "all") {
+            setMainList(initialData)
+            setActive("gen")
+        }
+    }
     return (
         <div className="search-area">
             <h1>Search for your Favorite Names</h1>
@@ -28,7 +42,9 @@ const SearchBar = ({ mainList, setMainList, searchInput, setSearchInput, initial
                 placeholder="Search here"
                 onChange={handleChange}
                 value={searchInput} />
-
+            <button onClick={() => (handleAllGenders("f"))} className="g-girls">All Girls</button>
+            <button onClick={() => (handleAllGenders("m"))} className="g-boys">All Boys</button>
+            <DisplayNames mainList={mainList} setMainList={setMainList} />
         </div>
     )
 }

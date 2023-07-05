@@ -98,6 +98,25 @@
 
 }
 
+.g-girls {
+  background-color: #b082b6;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  color: white;
+  height: 2rem;
+}
+
+.g-boys {
+  background-color: #647ba8;
+  margin-left: 0.5rem;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.4rem 1rem 0.4rem 1rem;
+  color: white;
+  height: 2rem;
+}
+
 .container-for-names {
   display: flex;
   flex-direction: row;

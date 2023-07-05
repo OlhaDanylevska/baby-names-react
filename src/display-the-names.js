@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 
-const DisplayNames = ({ allNames, setMainList }) => {
+const DisplayNames = ({ mainList, setMainList }) => {
     const [favoriteName, setFavoriteName] = useState([])
 
 
     const handleChanges = (name) => {
         setFavoriteName(favoriteName.concat(name))
         console.log(favoriteName)
-        setMainList(allNames.filter((babyName) => babyName.name !== name.name))
+        setMainList(mainList.filter((babyName) => babyName.name !== name.name))
     }
 
     const handleDelete = (name) => {
@@ -17,14 +17,14 @@ const DisplayNames = ({ allNames, setMainList }) => {
             return names.sort((a, b) => a[key].localeCompare(b[key]));
         };
 
-        const allNamesAfterFavorite = sortedNamesAfterFavorite([...allNames, name], "name");
+        const allNamesAfterFavorite = sortedNamesAfterFavorite([...mainList, name], "name");
         setMainList(allNamesAfterFavorite)
 
     }
 
     console.log({ favoriteName })
 
-    console.log("props", allNames)
+    console.log("props", mainList)
     return (
         <div className="all-names">
             <div className="favorites" >
@@ -39,7 +39,7 @@ const DisplayNames = ({ allNames, setMainList }) => {
                 </div>
             </div>
             <div className='container-for-names'>
-                {allNames.map((eachName) => {
+                {mainList.map((eachName) => {
                     return (<span key={eachName.id} className={eachName.sex}
                         onClick={() => { handleChanges(eachName) }}>{eachName.name}</span>);
                 })}
