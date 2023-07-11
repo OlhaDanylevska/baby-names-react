@@ -1,43 +1,22 @@
+import React, { useState } from 'react';
 import './App.css';
+import SearchBar from './SearchBar';
 import babyNamesData from "./babyNamesData.json"
 
 
-const sortTheNames = () => {
-  babyNamesData.sort(function (a, b) {
-    if (a.name < b.name) { return -1; }
-    if (a.name > b.name) { return 1; }
-    return 0;
-  })
-
-}
-
-sortTheNames()
-
-const DisplayTheName = () => {
-  return (
-    <div className='container-for-names'>
-      {
-
-        babyNamesData.map(eachName => {
-          if (eachName.sex === "m") {
-            return (<span className="each-name">{eachName.name}</span>)
-          } else {
-            return (<span className="each-name-girls">{eachName.name}</span>)
-          }
-
-        })
-      }
-    </div>
-  )
-
-}
-
 function App() {
+  const sortedNames = (names, key) => {
+    return names.sort((a, b) => a[key].localeCompare(b[key]));
+  };
+
+  const initialData = sortedNames(babyNamesData, "name");
+  const [searchInput, setSearchInput] = useState("");
+  const [mainList, setMainList] = useState(initialData)
+
   return (
     <div className="App">
-
-      <DisplayTheName />
-
+      <SearchBar mainList={mainList} setMainList={setMainList}
+        searchInput={searchInput} setSearchInput={setSearchInput} initialData={initialData} />
     </div>
   );
 }
